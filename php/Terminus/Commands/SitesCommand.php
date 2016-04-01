@@ -270,6 +270,10 @@ class SitesCommand extends TerminusCommand {
       foreach ($site->get('memberships') as $membership) {
         $memberships[$membership['id']] = $membership['name'];
       }
+      // $name = $site->get('name');
+      if ($site->get('frozen')) {
+        $site->attributes->name = $site->get('name') . '(frozen)';
+      }
       $rows[$site->get('id')] = [
         'name'          => $site->get('name'),
         'id'            => $site->get('id'),
